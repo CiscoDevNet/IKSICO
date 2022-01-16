@@ -40,7 +40,7 @@
 
 This use case addresses the second flow in the below diagram:
 
-![alt text](https://github.com/prathjan/images/blob/main/IKSICO1.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/IKSICO.png?raw=true)
 
 ### Pre-requisites
 
