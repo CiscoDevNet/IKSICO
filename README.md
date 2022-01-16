@@ -18,17 +18,19 @@
 
             Step 5: Setup IKSGlobal Sensitive Variables
 
-            Step 5: Setup IKSPolicy Variables
+            Step 6: Setup HCL Variables
 
-            Step 6: Setup IKSCluster Variables
+            Step 7: Setup IKSPolicy Variables
 
-            Step 7: Setup IKSApp Variables
+            Step 8: Setup IKSCluster Variables
 
-            Step 8: Setup IKSRemove Variables
+            Step 9: Setup IKSApp Variables
 
-            Step 9: Execute ICO template for IKS Cluster Provisioning
+            Step 10: Setup IKSRemove Variables
 
-            Step 10: Execute ICO template for App Deployment
+            Step 11: Execute ICO template for IKS Cluster Provisioning
+
+            Step 12: Execute ICO template for App Deployment
 
         Deprovision
             Execute ICO template for Deprovisioning
@@ -113,6 +115,7 @@ IKSWorkflow-Pre - Sets up the TFCB workspaces and uploads variables for:
 
 IKSWorkflowBase - Executes global, policy, cluster workspace
 
+Do not execute since we are yet to set up the variables specific to your environment.
 
 ## Step 2: Importing ICO template for App Deployment
 
@@ -128,7 +131,9 @@ Review the worflow imported.
 
 ![alt text](https://github.com/prathjan/images/blob/main/iksicoappsum.png?raw=true)
 
-IKSWorkflow_App - Execute app workspace to deploy the sample app
+Executing the above workflow will deploy an sample app in your IKS cluster. 
+
+Do not execute since we are yet to set up the variables specific to your environment.
 
 ## Step 3: Importing ICO template for Decommissioning
 
@@ -146,13 +151,13 @@ Review the worflow imported.
 
 The above workflow will delete the IKS cluster and also delete the TFCB workspaces.
 
+Do not execute since we are yet to set up the variables specific to your environment.
+
 ## Step 4: Setup IKSGlobal Variables
 
 Open IKSWorkflow-Pre->IKSWorkflowVars->Add Global Variables. Add the following variables:
 
     device_name = Name of the Virtual Machine Provider you wish to add. i.e vCenter
-
-    portgroup = Name of the portgroup(s) to be used in this provider. Example: "Management"
 
     datastore = Name of the datastore to be used with this provider.
 
@@ -188,7 +193,15 @@ Open IKSWorkflow-Pre->IKSWorkflowVars->Add Global Sensitive. Add the following v
 
 password = vSphere admin password -> mark as sensitive
 
-## Step 6: Setup IKSPolicy Variables
+## Step 6: Setup HCL Variables
+
+Portgroup has to be set up as a HCL variable in TFCB. For that, Edit Orchestration->IKSHCLVar->Invoke Web Var API Request->Body
+
+![alt text](https://github.com/prathjan/images/blob/main/hclvar.png?raw=true)
+
+Change the value of the porgroup value to be the value of your infrastructurem like: "value":"[\"vm-network6\"]",
+
+## Step 7: Setup IKSPolicy Variables
 
 Open IKSWorkflow-Pre->IKSWorkflowVars->Add Policy Variables. Add the following variables:
 
@@ -198,7 +211,9 @@ api_key - Intersight api_key
 
 secretkey - Intersight secretkey
 
-## Step 7: Setup IKSCluster Variables
+org - TFCB org, like Lab14
+
+## Step 8: Setup IKSCluster Variables
 
 Open IKSWorkflow-Pre->IKSWorkflowVars->Add k8s Variables. Add the following variables:
 
@@ -208,11 +223,15 @@ api_key - Intersight api_key
 
 secretkey - Intersight secretkey
 
-## Step 8: Setup IKSApp Variables
+org - TFCB org, like Lab14
+
+mgmtcfgsshkeys - your public ssh keys to log into the cluster nodes
+
+## Step 9: Setup IKSApp Variables
 
 ikswsname - IKS workspace name. In this case, enter IKSCluster
 
-## Step 9: Setup IKSRemove Variables
+## Step 10: Setup IKSRemove Variables
 
 globalwsname - workspace of the global WS. In this use case, it is IKSGlobal
 
@@ -220,9 +239,17 @@ api_key - Intersight api_key
 
 secretkey - Intersight secretkey
 
-## Step 10: Execute ICO template for IKS Infra Setup
+## Step 11: Execute ICO template for IKS Infra Setup
 
-## Step 11: Execute ICO template for App Deployment
+Open Orchestration->IKSWorkflowMain. Execute the workflow and monitor the progress:
+
+![alt text](https://github.com/prathjan/images/blob/main/infrawf.png?raw=true)
+
+## Step 12: Execute ICO template for App Deployment
+
+Open Orchestration->IKSWorkHelloApp. Execute the workflow and monitor the progress:
+
+![alt text](https://github.com/prathjan/images/blob/main/appwf.png?raw=true)
 
 Deprovisioning 
 
