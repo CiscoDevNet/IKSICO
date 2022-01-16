@@ -32,8 +32,8 @@
 
             Step 12: Execute ICO template for App Deployment
 
-        Deprovision
-            Execute ICO template for Deprovisioning
+            Step 13: Deprovision
+            
 
 
 ### Use Case
@@ -251,8 +251,10 @@ Open Orchestration->IKSWorkHelloApp. Execute the workflow and monitor the progre
 
 ![alt text](https://github.com/prathjan/images/blob/main/appwf.png?raw=true)
 
-Deprovisioning 
+## Step 13: Deprovisioning 
 
-    Execute ICO template for Deprovisioning
+Open Orchestration->IKSWorkHelloDeprovisionMain. Execute the workflow and monitor the progress:
+
+![alt text](https://github.com/prathjan/images/blob/main/delwf.png?raw=true)
 
 
