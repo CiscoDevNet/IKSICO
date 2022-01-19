@@ -245,11 +245,19 @@ Open Orchestration->IKSWorkflowMain. Execute the workflow and monitor the progre
 
 ![alt text](https://github.com/prathjan/images/blob/main/infrawf.png?raw=true)
 
+Note that you can retrieve the token ID and Agent ID from TFCB UI:
+
+![alt text](https://github.com/prathjan/images/blob/main/agent.png?raw=true)
+
+![alt text](https://github.com/prathjan/images/blob/main/token.png?raw=true)
+
 ## Step 12: Execute ICO template for App Deployment
 
 Open Orchestration->IKSWorkHelloApp. Execute the workflow and monitor the progress:
 
 ![alt text](https://github.com/prathjan/images/blob/main/appwf.png?raw=true)
+
+Connect to the IKS cluster and verify c onnectivity to the Hello IKS App!
 
 ## Step 13: Deprovisioning 
 
